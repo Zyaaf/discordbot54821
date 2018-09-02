@@ -12,7 +12,7 @@ bot.on('ready', () => {
     console.log(`--`);
 });
 
-bot.login(process.env.TOKEN);
+bot.login(process.env.loginuser);
 
 bot.on('message', message => {
     if(message.content === prefix + "test") {
