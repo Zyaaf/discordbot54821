@@ -157,6 +157,7 @@ bot.on('message', message => {
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
+        message.channel.send(embed)
         var embedlog = new Discord.RichEmbed()
         .setTitle("Ultralogs :tools:")
         .setDescription("--")
