@@ -57,7 +57,6 @@ bot.on('message', message => {
         .setColor('#ff0000')
         .addField("&test", "Effectuer un test pour voir si Neko est bien en ligne.")
         .addField("&help", "Afficher toutes les commades de Neko.")
-        .addField("&reglement", "Afficher le règlement d'utilisation de Neko.")
         .addField("&info", "Afficher toutes les informations de Neko.")
         .addField("&alerte", "Afficher une information importante.")
         .addField("&sondage", "Afficher un sondage.")
@@ -75,27 +74,6 @@ bot.on('message', message => {
         .addField("Utilisateur", message.author.tag, true)
         .addField("Discord", message.guild.name, true)
         .addField("Commande", "&help")
-        .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
-        bot.channels.get("476610621375512595").send(embedlog);
-    }
-
-    if(message.content === prefix + "reglement"){
-        message.delete()
-        var embednom = new Discord.RichEmbed()
-        .setTitle("Règlement :warning:")
-        .setDescription(args.join(" "))
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
-        message.channel.sendEmbed(embednom);
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&reglement")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
