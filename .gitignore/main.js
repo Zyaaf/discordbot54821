@@ -79,6 +79,7 @@ bot.on('message', message => {
         bot.channels.get("476610621375512595").send(embedlog);
     }
 
+    let args = message.content.split(" ").slice(1);
     if(message.content === prefix + "reglement"){
         message.delete()
         var embednom = new Discord.RichEmbed()
