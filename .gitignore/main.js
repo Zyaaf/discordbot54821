@@ -4,7 +4,7 @@ var bot = new Discord.Client();
 var prefix = ("&");
 
 bot.on('ready', () => {
-    //bot.user.setActivity(bot.guilds.size + ' SERVEURS | 🍁', "https://www.twitch.tv/neko");
+    //bot.user.setGame(bot.guilds.size + ' SERVEURS | 🍁', "https://www.twitch.tv/neko");
     //bot.user.setActivity(bot.guilds.size + ' SERVEURS | 🍁', {type: 'LISTENING'});
     //bot.user.setActivity(bot.guilds.size + ' SERVEURS | 🍁', {type: 'WATCHING'});
     bot.user.setActivity(bot.guilds.size + ' SERVS • ' + bot.users.size + ' USERS 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
