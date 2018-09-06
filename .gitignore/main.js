@@ -14,30 +14,6 @@ bot.on('ready', () => {
 
 bot.login(process.env.loginuser);
 
-bot.on('guildMemberAdd', member => {
-    var embedlog = new Discord.RichEmbed()
-    .setTitle("Logs :tools:")
-    .setDescription("--")
-    .setThumbnail(message.guild.iconURL)
-    .setColor('#ff0000')
-    .addField("Serveur", message.guild.name, true)
-    .addField("En provenance de", message.author.tag, true)
-    .setFooter(message.author.username + ` est arrivé(e) sur le serveur ` + message.guild.name).setTimestamp()
-    bot.channels.get("487052782466236416").send(embedlog);
-});
-    
-bot.on('guildMemberRemove', member => {
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name, true)
-        .addField("En provenance de", message.author.tag, true)
-        .setFooter(message.author.username + ` est parti(e) du serveur ` + message.guild.name).setTimestamp()
-        bot.channels.get("487052782466236416").send(embedlog);
-});
-
 bot.on('message', message => {
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
