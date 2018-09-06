@@ -61,7 +61,7 @@ bot.on('message', message => {
         .addField("&alerte", "Afficher une information importante.")
         .addField("&sondage", "Afficher un sondage.")
         .addField("&clear", "Effacer plusieurs messages du channel.")
-        .addField("&globaltchat", "Communiquer entre serveurs.")
+        .addField("&tchat", "Communiquer entre serveurs.")
         .addField("&say", "Afficher le message du joueur.")
         .addField("&8ball", "Donner une réponse à votre question.")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
