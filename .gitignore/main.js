@@ -18,13 +18,13 @@ bot.on('message', message => {
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&test")
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&test ")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
@@ -36,14 +36,14 @@ bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + "say")) {
         message.delete()
-        message.channel.send(`**` + message.author.username + ` : **` + args.join(" "));
+        message.channel.send(`**` + message.author.username + `: **` + args.join(" "));
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
         .addField("Commande", "&say " + args.join(" "))
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
@@ -67,13 +67,13 @@ bot.on('message', message => {
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&help")
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&help ")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
@@ -90,13 +90,13 @@ bot.on('message', message => {
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&info")
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&info ")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
@@ -109,13 +109,13 @@ bot.on('message', message => {
             message.channel.bulkDelete(list);
         }, function(err){message.channel.send("Erreur !")})
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&clear")
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&clear ")
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
@@ -133,12 +133,12 @@ bot.on('message', message => {
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         message.channel.send(embed)
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
         .addField("Commande", "&alerte " + args.join(" "))
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
@@ -163,13 +163,13 @@ bot.on('message', message => {
 
         });
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&sondage " + thingToEcho)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&sondage " + args.join(" "))
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }else{
@@ -177,32 +177,32 @@ bot.on('message', message => {
     }
     }
 
-    if(message.content.startsWith(prefix + "globaltchat")) {
+    if(message.content.startsWith(prefix + "tchat")) {
         let xoargs = message.content.split(" ").slice(1);
         let xo03 = xoargs.join(" ")
-        var xo02 = message.guild.channels.find('name', 'neko-global');
+        var xo02 = message.guild.channels.find('name', 'neko-interserveur');
         message.delete()
-    if(!xo02) return message.reply('le channel neko-global est introuvable.')
-    if(message.channel.name !== 'neko-global') return message.reply("la commande est à effecter dans le channel neko-global.")
+    if(!xo02) return message.reply('le channel neko-interserveur est introuvable.')
+    if(message.channel.name !== 'neko-global') return message.reply("la commande est à effecter dans le channel neko-interserveur.")
     if(!xo03) return message.reply("merci d'écrire un message à envoyer à la globalité des serveurs Discord.")
         var embedglobal = new Discord.RichEmbed()
-        .setTitle("Discussion interserveur :speech_balloon:")
+        .setTitle("Discussion InterServeur :speech_balloon:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
         .addField("Message", xo03)
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.findAll('name', 'neko-global').map(channel => channel.send(embedglobal))
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&globaltchat " + xo03)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&tchat " + args.join(" "))
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
@@ -226,13 +226,13 @@ bot.on('message', message => {
         let reponse = (replys[Math.floor(Math.random() * replys.length)])
         message.reply(reponse)
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Ultralogs :tools:")
+        .setTitle("Logs :tools:")
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Utilisateur", message.author.tag, true)
-        .addField("Discord", message.guild.name, true)
-        .addField("Commande", "&8ball " + tte)
+        .addField("Serveur", message.guild.name, true)
+        .addField("En provenance de", message.author.tag, true)
+        .addField("Commande", "&8ball " + args.join(" "))
         .setFooter(`Commande effectuée par ` + message.author.username, message.author.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
