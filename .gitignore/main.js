@@ -183,7 +183,7 @@ bot.on('message', message => {
         var xo02 = message.guild.channels.find('name', 'neko-interserveur');
         message.delete()
     if(!xo02) return message.reply('le channel neko-interserveur est introuvable.')
-    if(message.channel.name !== 'neko-global') return message.reply("la commande est à effecter dans le channel neko-interserveur.")
+    if(message.channel.name !== 'neko-interserveur') return message.reply("la commande est à effecter dans le channel neko-interserveur.")
     if(!xo03) return message.reply("merci d'écrire un message à envoyer à la globalité des serveurs Discord.")
         var embedglobal = new Discord.RichEmbed()
         .setTitle("Discussion InterServeur :speech_balloon:")
