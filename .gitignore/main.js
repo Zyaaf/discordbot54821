@@ -22,7 +22,7 @@ bot.on('guildMemberAdd', member => {
     .setColor('#ff0000')
     .addField("Serveur", message.guild.name, true)
     .addField("En provenance de", message.author.tag, true)
-    .setFooter(message.author.username + ` vient d'arriver sur le serveur ` + message.guild.name).setTimestamp()
+    .setFooter(message.author.username + ` est arrivé(e) sur le serveur ` + message.guild.name).setTimestamp()
     bot.channels.get("487052782466236416").send(embedlog);
 });
     
@@ -34,7 +34,7 @@ bot.on('guildMemberRemove', member => {
         .setColor('#ff0000')
         .addField("Serveur", message.guild.name, true)
         .addField("En provenance de", message.author.tag, true)
-        .setFooter(message.author.username + ` vient de partir du serveur ` + message.guild.name).setTimestamp()
+        .setFooter(message.author.username + ` est parti(e) du serveur ` + message.guild.name).setTimestamp()
         bot.channels.get("487052782466236416").send(embedlog);
 });
 
