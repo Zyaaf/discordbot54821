@@ -12,8 +12,6 @@ bot.on('ready', () => {
     console.log(`--`);
 });
 
-bot.login("NDc2NTc2NTQ5ODgyMDM2MjM0.DkvmNg.VbU-SG86k5B59caQ5fVk9v5OhGM");
-
 bot.on('message', message => {
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
