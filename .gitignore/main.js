@@ -22,7 +22,7 @@ bot.on('message', message => {
         .setColor('#ff0000')
         .addField("Serveur", message.guild.name, true)
         .addField("En provenance de", message.author.tag, true)
-        .setFooter(`© NekoBot • ` + `Commande effectuée par ` + message.author.username, bot.user.avatarURL).setTimestamp()
+        .setFooter(`© NekoBot • ` + `Commande effectuée par ` + message.author.username, message.bot.avatarURL).setTimestamp()
         bot.channels.get("476610621375512595").send(embedlog);
     }
     
