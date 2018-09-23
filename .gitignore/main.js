@@ -185,7 +185,7 @@ bot.on('message', message => {
         .addField("En provenance de", message.author.tag, true)
         .addField("Message", xo03)
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
-        bot.channels.findAll('name', 'neko-global').map(channel => channel.send(embedglobal))
+        bot.channels.findAll('name', 'neko-interserveur').map(channel => channel.send(embedglobal))
         var embedlog = new Discord.RichEmbed()
         .setTitle("Logs :tools:")
         .setDescription("--")
