@@ -33,7 +33,7 @@ bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + "say")) {
         message.delete()
-        message.channel.send(`**` + message.author.username + `: **` + args.join(" "));
+        message.channel.send(args.join(" "));
         var embedlog = new Discord.RichEmbed()
         .setTitle("Logs :tools:")
         .setDescription("--")
