@@ -215,6 +215,15 @@ bot.on('message', message => {
 
         let reponse = (replys[Math.floor(Math.random() * replys.length)])
         message.reply(reponse)
+        var embedlog = new Discord.RichEmbed()
+        .setTitle("Logs :tools:")
+        .setDescription("--")
+        .setThumbnail(message.guild.iconURL)
+        .setColor('#ff0000')
+        .addField("Serveur", message.guild.name)
+        .addField("Commande", "Neko " + args.join(" "))
+        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
+        bot.channels.get("493488756599291904").send(embedlog);
     }
 
     if(message.content.startsWith(prefix + "8ball")) {
