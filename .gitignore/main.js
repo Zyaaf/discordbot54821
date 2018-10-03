@@ -374,26 +374,6 @@ bot.on('message', message => {
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
         bot.channels.get("493488756599291904").send(embedlog);
     }
-    
-    if(message.content.startsWith("neko")) {
-        let args = message.content.split(" ").slice(1);
-        let tte = args.join(" ")
-    if (!tte){
-        return message.reply("merci de me poser une question afin que j'y réponde.")};
-
-        var replys = [
-            "oui.",
-            "non.",
-            "je ne sais pas.",
-            "peut-être.",
-            "sûrement !",
-            "probablement.",
-            "interroge moi plus tard."
-        ];
-
-        let reponse = (replys[Math.floor(Math.random() * replys.length)])
-        message.reply(reponse)
-    }
 
     if(message.content.startsWith(prefix + "8ball")) {
         let args = message.content.split(" ").slice(1);
