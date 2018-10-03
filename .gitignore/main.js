@@ -7,11 +7,87 @@ bot.on('ready', () => {
     //bot.user.setGame(bot.guilds.size + ' SERVS 🍁', "https://www.twitch.tv/neko");
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'LISTENING'});
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'WATCHING'});
-    bot.user.setActivity('&help | ' + bot.guilds.size + ' servs et ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
+    bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     console.log(`${bot.user.tag} est en ligne sur ${bot.guilds.size} serveurs avec ${bot.users.size} utilisateurs`);
 });
 
 bot.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+    if(message.content.startsWith("a")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("z")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("e")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("r")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("t")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("y")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("u")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("i")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("o")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("p")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("q")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("s")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("d")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("f")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("g")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("h")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("j")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("k")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("l")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("m")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("w")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("c")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("v")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("b")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
+    if(message.content.startsWith("n")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+    }
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
         var embedlog = new Discord.RichEmbed()
@@ -38,11 +114,10 @@ bot.on('message', message => {
         bot.channels.get("493488756599291904").send(embedlog);
     }
     
-    if(message.content === "salut Neko") {
+    if(message.content.startsWith("salut Neko")) {
         message.channel.send(`Salut salut !`);
     }
 
-    let args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + "say")) {
         message.delete()
         message.channel.send(args.join(" "));
@@ -70,6 +145,8 @@ bot.on('message', message => {
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
         bot.channels.get("493488756599291904").send(embedlog);
     }
+
+    //message logs ici
 
     if(message.content === prefix + "help"){
         var embednom = new Discord.RichEmbed()
@@ -393,15 +470,6 @@ bot.on('message', message => {
 
         let reponse = (replys[Math.floor(Math.random() * replys.length)])
         message.reply(reponse)
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
-        .addField("Commande", "Neko 8ball " + args.join(" "))
-        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
     }
 
     if(message.content.startsWith(prefix + "8ball")) {
