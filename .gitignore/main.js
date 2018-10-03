@@ -14,80 +14,162 @@ bot.on('ready', () => {
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
     if(message.content.startsWith("a")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** A.." + args.join(" "));
+    }
+    if(message.content.startsWith("A")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** A.." + args.join(" "));
     }
     if(message.content.startsWith("z")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Z.." + args.join(" "));
+    }
+    if(message.content.startsWith("Z")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Z.." + args.join(" "));
     }
     if(message.content.startsWith("e")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** E.." + args.join(" "));
+    }
+    if(message.content.startsWith("E")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** E.." + args.join(" "));
     }
     if(message.content.startsWith("r")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** R.." + args.join(" "));
+    }
+    if(message.content.startsWith("R")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** R.." + args.join(" "));
     }
     if(message.content.startsWith("t")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** T.." + args.join(" "));
+    }
+    if(message.content.startsWith("T")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** T.." + args.join(" "));
     }
     if(message.content.startsWith("y")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Y.." + args.join(" "));
+    }
+    if(message.content.startsWith("Y")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Y.." + args.join(" "));
     }
     if(message.content.startsWith("u")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** U.." + args.join(" "));
+    }
+    if(message.content.startsWith("U")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** U.." + args.join(" "));
     }
     if(message.content.startsWith("i")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** I.." + args.join(" "));
+    }
+    if(message.content.startsWith("I")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** I.." + args.join(" "));
     }
     if(message.content.startsWith("o")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** O.." + args.join(" "));
+    }
+    if(message.content.startsWith("O")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** O.." + args.join(" "));
     }
     if(message.content.startsWith("p")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** P.." + args.join(" "));
+    }
+    if(message.content.startsWith("P")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** P.." + args.join(" "));
     }
     if(message.content.startsWith("q")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Q.." + args.join(" "));
+    }
+    if(message.content.startsWith("Q")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** Q.." + args.join(" "));
     }
     if(message.content.startsWith("s")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** S.." + args.join(" "));
+    }
+    if(message.content.startsWith("S")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** S.." + args.join(" "));
     }
     if(message.content.startsWith("d")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** D.." + args.join(" "));
+    }
+    if(message.content.startsWith("D")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** D.." + args.join(" "));
     }
     if(message.content.startsWith("f")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** F.." + args.join(" "));
+    }
+    if(message.content.startsWith("F")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** F.." + args.join(" "));
     }
     if(message.content.startsWith("g")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** G.." + args.join(" "));
+    }
+    if(message.content.startsWith("G")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** G.." + args.join(" "));
     }
     if(message.content.startsWith("h")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** H.." + args.join(" "));
+    }
+    if(message.content.startsWith("H")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** H.." + args.join(" "));
     }
     if(message.content.startsWith("j")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** J.." + args.join(" "));
+    }
+    if(message.content.startsWith("J")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** J.." + args.join(" "));
     }
     if(message.content.startsWith("k")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** K.." + args.join(" "));
+    }
+    if(message.content.startsWith("K")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** K.." + args.join(" "));
     }
     if(message.content.startsWith("l")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** L.." + args.join(" "));
+    }
+    if(message.content.startsWith("L")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** L.." + args.join(" "));
     }
     if(message.content.startsWith("m")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** M.." + args.join(" "));
+    }
+    if(message.content.startsWith("M")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** M.." + args.join(" "));
     }
     if(message.content.startsWith("w")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** W.." + args.join(" "));
+    }
+    if(message.content.startsWith("W")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** W.." + args.join(" "));
+    }
+    if(message.content.startsWith("x")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :**X.." + args.join(" "));
+    }
+    if(message.content.startsWith("X")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :**X.." + args.join(" "));
     }
     if(message.content.startsWith("c")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** C.." + args.join(" "));
+    }
+    if(message.content.startsWith("C")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** C.." + args.join(" "));
     }
     if(message.content.startsWith("v")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** V.." + args.join(" "));
+    }
+    if(message.content.startsWith("V")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** V.." + args.join(" "));
     }
     if(message.content.startsWith("b")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** B.." + args.join(" "));
+    }
+    if(message.content.startsWith("B")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** B.." + args.join(" "));
     }
     if(message.content.startsWith("n")) {
-        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** " + args.join(" "));
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** N.." + args.join(" "));
     }
+    if(message.content.startsWith("N")) {
+        bot.channels.get("497017715576537100").send("**" + message.author.tag + " :** N.." + args.join(" "));
+    }
+    
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
         var embedlog = new Discord.RichEmbed()
