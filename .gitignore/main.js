@@ -4,10 +4,10 @@ var bot = new Discord.Client();
 var prefix = ("&");
 
 bot.on('ready', () => {
-    //bot.user.setGame(bot.guilds.size + ' SERVS 🍁', "https://www.twitch.tv/neko");
+    bot.user.setGame('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', "https://www.twitch.tv/neko");
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'LISTENING'});
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'WATCHING'});
-    bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
+    //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     console.log(`${bot.user.tag} est en ligne sur ${bot.guilds.size} serveurs avec ${bot.users.size} utilisateurs`);
 });
 
