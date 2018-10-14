@@ -186,7 +186,7 @@ bot.on('message', message => {
         .setColor('#ff0000')
         .addField("Crée par", `Lucaas#7251`)
         .addField("Crée le", `24/08/2018`)
-        .addField("Version", `1.0.0`)
+        .addField("Version", `1.0.6`)
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
@@ -208,7 +208,7 @@ bot.on('message', message => {
         .setColor('#ff0000')
         .addField("Crée par", `Lucaas#7251`)
         .addField("Crée le", `24/08/2018`)
-        .addField("Version", `1.0.0`)
+        .addField("Version", `1.0.6`)
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
