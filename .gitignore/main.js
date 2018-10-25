@@ -15,12 +15,13 @@ function play(connection, message) {
 
 bot.on('ready', () => {
     //bot.user.setGame('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', "https://www.twitch.tv/neko");
-    //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'LISTENING'});
-    //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'WATCHING'});
+    //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {type: 'LISTENING'});
+    //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {type: 'WATCHING'});
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     var games = [
-    "n!help | NekoBeta",
+    "&help | NekOwO 👻",
     "Développé par Lucaas",
+    bot.guilds.size + " serveurs !",
     bot.users.size + " utilisateurs !"
   ]
   bot.user.setActivity(setInterval(function() {
