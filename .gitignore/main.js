@@ -3,11 +3,29 @@ const Discord = require('discord.js');
 var bot = new Discord.Client();
 var prefix = ("&");
 
+function play(connection, message) {
+  var server = servers[message.guild.id];
+     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+     server.queue.shift();
+     server.dispatcher.on("end", function() {
+      if (server.queue[0]) play(connection, message);
+      else connection.disconnect();
+     });
+}
+
 bot.on('ready', () => {
-    bot.user.setGame('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', "https://www.twitch.tv/neko");
+    //bot.user.setGame('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', "https://www.twitch.tv/neko");
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'LISTENING'});
     //bot.user.setActivity(bot.guilds.size + ' SERVS 🍁', {type: 'WATCHING'});
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
+    var games = [
+    "n!help | NekoBeta",
+    "Développé par Lucaas",
+    bot.users.size + " utilisateurs !"
+  ]
+  bot.user.setActivity(setInterval(function() {
+    bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
+  }, 3000))
     console.log(`${bot.user.tag} est en ligne sur ${bot.guilds.size} serveurs avec ${bot.users.size} utilisateurs`);
 });
 
