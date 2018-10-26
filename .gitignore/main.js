@@ -21,8 +21,8 @@ bot.on('ready', () => {
     var games = [
     "&help | NekOwO 👻",
     "Développé par Lucaas",
-    bot.guilds.size + " serveurs !",
-    bot.users.size + " utilisateurs !"
+    bot.guilds.size + " serveurs",
+    bot.users.size + " utilisateurs"
   ]
   bot.user.setActivity(setInterval(function() {
     bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
