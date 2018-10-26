@@ -41,7 +41,7 @@ bot.on('ready', () => {
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
 
-    if (message.content.startsWith(prefix + "eval")) {
+    if (message.content.startsWith(prefix + "eval ")) {
       message.delete()
       if(message.author.id !== config.ownerID) return;
       try {
