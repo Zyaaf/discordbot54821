@@ -2,24 +2,24 @@ const Discord = require('discord.js');
 
 var bot = new Discord.Client();
 var prefix = ("&");
-
+const config = require('./config.json')
 
 function play(connection, message) {
-  var server = servers[message.guild.id];
-     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-     server.queue.shift();
-     server.dispatcher.on("end", function() {
-      if (server.queue[0]) play(connection, message);
-      else connection.disconnect();
-     });
-}
+    var server = servers[message.guild.id];
+       server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+       server.queue.shift();
+       server.dispatcher.on("end", function() {
+        if (server.queue[0]) play(connection, message);
+        else connection.disconnect();
+       });
+  }
 
-function clean(text) {
-    if (typeof(text) === "string")
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
-        return text;
-}
+  function clean(text) {
+      if (typeof(text) === "string")
+        return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+      else
+          return text;
+  }
 
 bot.on('ready', () => {
     //bot.user.setGame('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', "https://www.twitch.tv/neko");
@@ -27,22 +27,24 @@ bot.on('ready', () => {
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {type: 'WATCHING'});
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     var games = [
-    "&help | NekOwO 👻",
-    "Développé par Lucaas",
-    bot.guilds.size + " serveurs",
-    bot.users.size + " utilisateurs"
-  ]
-  bot.user.setActivity(setInterval(function() {
-    bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
-  }, 3000))
+        "&help | NekOwO 👻",
+        "Développé par Lucaas",
+        bot.guilds.size + " serveurs",
+        bot.users.size + " utilisateurs"
+      ]
+      bot.user.setActivity(setInterval(function() {
+        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
+      }, 3000))
     console.log(`${bot.user.tag} est en ligne sur ${bot.guilds.size} serveurs avec ${bot.users.size} utilisateurs`);
 });
+
+bot.login(process.env.loginuser);
 
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
 
     if (message.content.startsWith(prefix + "eval ")) {
-      message.delete()
+        message.delete()
       if(message.author.id !== config.ownerID) return;
       try {
         const code = args.join(" ");
@@ -67,7 +69,7 @@ bot.on('message', message => {
         message.channel.sendEmbed(embednom);
       }
     }
-
+    
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
         var embedlog = new Discord.RichEmbed()
@@ -80,7 +82,7 @@ bot.on('message', message => {
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
         bot.channels.get("493488756599291904").send(embedlog);
     }
-
+    
     if(message.content === "neko test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
         var embedlog = new Discord.RichEmbed()
@@ -178,8 +180,8 @@ bot.on('message', message => {
 
     if(message.content === prefix + "help"){
         var embednom = new Discord.RichEmbed()
-        .setTitle("Commandes :tools:")
-        .setDescription("--")
+        .setTitle("Besoin d'aide?")
+        .setDescription("Voici une liste de toutes les commandes que Neko a sur ce serveur.\nPour utiliser une commande, faites !<nom de la commande>.")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
         .addField("&test", "Effectuer un test pour voir si Neko est bien en ligne.")
@@ -529,5 +531,3 @@ bot.on('message', message => {
         bot.channels.get("493488756599291904").send(embedlog);
     }
 });
-
-bot.login(process.env.loginuser);
