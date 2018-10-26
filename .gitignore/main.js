@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 var bot = new Discord.Client();
 var prefix = ("&");
 
+
 function play(connection, message) {
   var server = servers[message.guild.id];
      server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
@@ -32,6 +33,32 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
+
+    if (message.content.startsWith(prefix + "eval")) {
+      if(message.author.id !== config.ownerID) return;
+      try {
+        const code = args.join(" ");
+        let evaled = eval(code);
+   
+        if (typeof evaled !== "string")
+          evaled = require("util").inspect(evaled);
+   
+        var embednom = new Discord.RichEmbed()
+        .setThumbnail(message.guild.iconURL)
+        .setColor('#36393F')
+        .addField(":inbox_tray: Input", "```" + args.join(" ") + "```")
+        .addField(":outbox_tray:  Output", "```" + clean(evaled), {code:"xl"} + "```")
+        .setFooter(`Neko Eval`)
+        message.channel.sendEmbed(embednom);
+      } catch (err) {
+        var embednom = new Discord.RichEmbed()
+        .setColor('#36393F')
+        .addField(":inbox_tray: Input", "```" + args.join(" ") + "```")
+        .addField(":outbox_tray:  Output", `\`\`\`xl\n${clean(err)}\n\`\`\``)
+        .setFooter(`Neko Eval`)
+        message.channel.sendEmbed(embednom);
+      }
+    }
 
     if(message.content === prefix + "test") {
         message.channel.send("Je suis bien en ligne ! :computer:");
