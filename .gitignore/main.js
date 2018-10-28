@@ -58,7 +58,7 @@ bot.on('message', message => {
         if (ev.length > 1950) {
             ev = ev.substr(0, 1950);
         }
-        let token = process.env.loginuser.replace(/\./g, "\.")
+        let token = config.token.replace(/\./g, "\.")
         let re = new RegExp(token, 'g') 
         ev = ev.replace(re, "*R-eD-Ac-Te-D-*");
         var embednom = new Discord.RichEmbed()
@@ -69,7 +69,13 @@ bot.on('message', message => {
         .setFooter(`Neko Eval`)
         message.channel.sendEmbed(embednom);
         } catch(err) {
-            message.channel.sendMessage('```js\n'+err+"```")
+            var embednom = new Discord.RichEmbed()
+            .setThumbnail(message.guild.iconURL)
+            .setColor('#36393F')
+            .addField(":inbox_tray: Input", "```js\n"+code+"```")
+            .addField(":outbox_tray:  Output", "```js\n"+err+"```")
+            .setFooter(`Neko Eval`)
+            message.channel.sendEmbed(embednom);
         }
     }
     
