@@ -69,13 +69,7 @@ bot.on('message', message => {
         .setFooter(`Neko Eval`)
         message.channel.sendEmbed(embednom);
         } catch(err) {
-            var embednom = new Discord.RichEmbed()
-            .setThumbnail(message.guild.iconURL)
-            .setColor('#36393F')
-            .addField(":inbox_tray: Input", "```js\n"+code+"```")
-            .addField(":outbox_tray:  Output", "```js\n"+err+"```")
-            .setFooter(`Neko Eval`)
-            message.channel.sendEmbed(embednom);
+            message.channel.sendMessage('`ERROR :` ```js\n'+err+"```")
         }
     }
     
