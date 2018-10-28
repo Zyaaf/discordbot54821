@@ -39,7 +39,7 @@ bot.on('ready', () => {
     console.log(`${bot.user.tag} est en ligne sur ${bot.guilds.size} serveurs avec ${bot.users.size} utilisateurs`);
 });
 
-bot.login(config.token);
+bot.login(process.env.loginuser);
 
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
@@ -58,7 +58,7 @@ bot.on('message', message => {
         if (ev.length > 1950) {
             ev = ev.substr(0, 1950);
         }
-        let token = config.token.replace(/\./g, "\.")
+        let token = process.env.loginuser.replace(/\./g, "\.")
         let re = new RegExp(token, 'g') 
         ev = ev.replace(re, "*R-eD-Ac-Te-D-*");
         var embednom = new Discord.RichEmbed()
