@@ -1,3 +1,5 @@
 {
-    "ownerID": "353859650686550027"
-  }
+    "ownerID": "353859650686550027",
+    "token": "process.env.loginuser",
+    "prefix": "&"
+}
