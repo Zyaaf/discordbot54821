@@ -149,6 +149,7 @@ bot.on('message', message => {
     }
     
     if(cmd === `${prefix}kick`) {
+        message.delete()
         let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!kUser) return message.reply("je ne trouve pas l'utilisateur à expulser.");
         let kReason = args.join(" ").slice(22);
@@ -164,12 +165,12 @@ bot.on('message', message => {
       }
       
       if(cmd === `${prefix}ban`) {
+        message.delete()
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!bUser) return message.reply("je ne trouve pas l'utilisateur à bannir.");
         let bReason = args.join(" ").slice(22);
         if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("tu n'as pas la permission exacte pour executer cette commande.");
         if(bUser.hasPermission("MANAGE_MESSAGES")) return message.reply("cette personne ne peut pas être banni.");
-        let banEmbed = new Discord.RichEmbed()
         message.channel.send(`**${message.user.username}** a été banni du serveur avec succès.`);
         var embedlog = new Discord.RichEmbed()
         .setColor('RANDOM')
