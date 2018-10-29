@@ -77,7 +77,7 @@ bot.on('message', message => {
     
     if(message.content === prefix + "test") {
         var embednom = new Discord.RichEmbed()
-        .setColor('#36393F')
+        .setColor('RANDOM')
         .setDescription("Je suis bien en ligne ! :desktop:")
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
