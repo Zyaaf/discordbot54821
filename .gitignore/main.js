@@ -43,6 +43,9 @@ bot.login(process.env.loginuser);
 
 bot.on('message', message => {
     let args = message.content.split(" ").slice(1);
+    let prefix = config.prefix;
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
 
     if (message.author.id !== config.ownerID) return;
     if (!message.content.startsWith(config.prefix)) return;
@@ -73,16 +76,20 @@ bot.on('message', message => {
     }
     
     if(message.content === prefix + "test") {
-        message.channel.send("Je suis bien en ligne ! :computer:");
+        var embednom = new Discord.RichEmbed()
+        .setColor('#36393F')
+        .setDescription("Je suis bien en ligne ! :desktop:")
+        message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&test")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
     
     if(message.content.startsWith("salut Neko")) {
@@ -93,14 +100,15 @@ bot.on('message', message => {
         message.delete()
         message.channel.send(args.join(" "));
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&say " + args.join(" "))
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
 
     if(message.content.startsWith(prefix + "admin")) {
@@ -113,69 +121,85 @@ bot.on('message', message => {
             permissions: "ADMINISTRATOR",
             color: "#ff0000",
           })
-          membre.addRole(role).catch(console.error);
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
-        .addField("Commande", "&admin")
-        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("501007481363890176").send(embedlog);
-    }else {
-      message.reply("tu n'as pas la permission exacte pour executer cette commande.");
     }
     }
 
     if(message.content === prefix + "help"){
         var embednom = new Discord.RichEmbed()
-        .setTitle("Besoin d'aide?")
+        .setAuthor("Commandes", bot.user.avatarURL)
         .setDescription("Voici une liste de toutes les commandes que Neko a sur ce serveur.\nPour utiliser une commande, faites &<nom de la commande>.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("&test", "Effectuer un test pour voir si Neko est bien en ligne.")
-        .addField("&help", "Afficher toutes les commades de Neko.")
-        .addField("&info", "Afficher toutes les informations de Neko.")
-        .addField("&alerte", "Afficher une information importante.")
-        .addField("&sondage", "Afficher un sondage.")
-        .addField("&clear", "Effacer plusieurs messages du channel.")
-        .addField("&tchat", "Communiquer entre serveurs.")
-        .addField("&say", "Afficher le message du joueur.")
-        .addField("&8ball", "Donner une réponse à votre question.")
+        .setColor('RANDOM')
+        .addField("Administration", "`sondage`")
+        .addField("Modération", "`ban`, `kick`, `warn`, `clear`, `report`")
+        .addField("Utilitaires", "`test`, `help`, `infobot`, `serverinfo`, `userinfo`")
+        .addField("Divertissantes", "`say`, `8ball`, `flip`")
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&help")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
+    
+    if(cmd === `${prefix}kick`) {
+        let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(!kUser) return message.reply("je ne trouve pas l'utilisateur à expulser.");
+        let kReason = args.join(" ").slice(22);
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("tu n'as pas la permission exacte pour executer cette commande.");
+        if(kUser.hasPermission("MANAGE_MESSAGES")) return message.reply("cette personne ne peut pas être expulsé.");
+        message.channel.send(`**${message.user.username}** a été expulsé du serveur avec succès.`);
+        var embedlog = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setDescription(`**${message.user.tag}** a été expulsé du serveur **${message.guild}**.`)
+        bot.channels.get("506331676184412171").send(embedlog);
+        message.guild.member(kUser).kick(kReason);
+        return;
+      }
+      
+      if(cmd === `${prefix}ban`) {
+        let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(!bUser) return message.reply("je ne trouve pas l'utilisateur à bannir.");
+        let bReason = args.join(" ").slice(22);
+        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("tu n'as pas la permission exacte pour executer cette commande.");
+        if(bUser.hasPermission("MANAGE_MESSAGES")) return message.reply("cette personne ne peut pas être banni.");
+        let banEmbed = new Discord.RichEmbed()
+        message.channel.send(`**${message.user.username}** a été banni du serveur avec succès.`);
+        var embedlog = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setDescription(`**${message.user.tag}** a été banni du serveur **${message.guild}**.`)
+        bot.channels.get("506331676184412171").send(embedlog);
+        message.guild.member(bUser).ban(bReason);
+        return;
+      }
 
-    if(message.content === prefix + "info"){
+    if(message.content === prefix + "infobot"){
         var embednom = new Discord.RichEmbed()
-        .setTitle("Informations :level_slider:")
+        .setAuthor("Informations", bot.user.avatarURL)
         .setDescription("--")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
+        .setColor('RANDOM')
         .addField("Crée par", `Lucaas#7251`)
         .addField("Crée le", `24/08/2018`)
         .addField("Version", `1.0.6`)
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
         message.channel.sendEmbed(embednom);
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&info ")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
 
     if(message.content === prefix + "clear") {
@@ -186,37 +210,17 @@ bot.on('message', message => {
             message.channel.bulkDelete(list);
         }, function(err){message.channel.send("Erreur !")})
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&clear ")
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
     else message.reply("tu n'as pas la permission exacte pour executer cette commande.")
-    }
-
-    if(message.content.startsWith(prefix + "alerte")) {
-        message.delete()
-    if(!message.member.hasPermission(`ADMINISTRATOR`)) return message.reply("tu n'as pas la permission exacte pour executer cette commande.");
-        const embed = new Discord.RichEmbed()
-        .setTitle("Information importante de " + message.author.username + " :rotating_light:")
-        .setDescription("" + args.join(" ") + "")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
-        message.channel.send(embed)
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
-        .addField("Commande", "&alerte " + args.join(" "))
-        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
     }
 
     if(message.content.startsWith(prefix + "sondage")){
@@ -229,7 +233,7 @@ bot.on('message', message => {
         .setTitle("Sondage de " + message.author.username + " :bar_chart:")
         .setDescription("" + thingToEcho + "")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
+        .setColor('RANDOM')
         .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
         message.channel.send(embed)
         .then(function (message){
@@ -239,47 +243,49 @@ bot.on('message', message => {
 
         });
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .setColor('RANDOM')
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&sondage " + args.join(" "))
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }else{
         return message.reply("tu n'as pas la permission exacte pour executer cette commande.")
     }
     }
 
-    if(message.content.startsWith(prefix + "tchat")) {
-        let xoargs = message.content.split(" ").slice(1);
-        let xo03 = xoargs.join(" ")
-        var xo02 = message.guild.channels.find('name', 'neko-interserveur');
-        message.delete()
-    if(!xo02) return message.reply('le channel neko-interserveur est introuvable.')
-    if(message.channel.name !== 'neko-interserveur') return message.reply("la commande est à effecter dans le channel neko-interserveur.")
-    if(!xo03) return message.reply("merci d'écrire un message à envoyer à la globalité des serveurs Discord.")
-        var embedglobal = new Discord.RichEmbed()
-        .setTitle("Discussion InterServeur :speech_balloon:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name, true)
-        .addField("En provenance de", message.author.tag, true)
-        .addField("Message", xo03)
-        .setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
-        bot.channels.findAll('name', 'neko-interserveur').map(channel => channel.send(embedglobal))
-        var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
-        .setThumbnail(message.guild.iconURL)
-        .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
-        .addField("Commande", "&tchat " + args.join(" "))
-        .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
-    }
+    //if(message.content.startsWith(prefix + "tchat")) {
+        //let xoargs = message.content.split(" ").slice(1);
+        //let xo03 = xoargs.join(" ")
+        //var xo02 = message.guild.channels.find('name', 'neko-interserveur');
+        //message.delete()
+    //if(!xo02) return message.reply('le channel neko-interserveur est introuvable.')
+    //if(message.channel.name !== 'neko-interserveur') return message.reply("la commande est à effecter dans le channel neko-interserveur.")
+    //if(!xo03) return message.reply("merci d'écrire un message à envoyer à la globalité des serveurs Discord.")
+        //var embedglobal = new Discord.RichEmbed()
+        //.setTitle("Discussion InterServeur :speech_balloon:")
+        //.setDescription("--")
+        //.setThumbnail(message.guild.iconURL)
+        //.setColor('RANDOM')
+        //.addField("Serveur", message.guild.name, true)
+        //.addField("En provenance de", message.author.tag, true)
+        //.addField("Message", xo03)
+        //.setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
+        //bot.channels.findAll('name', 'neko-interserveur').map(channel => channel.send(embedglobal))
+        //var embedlog = new Discord.RichEmbed()
+        //.setTitle("Logs  de commandes :tools:")
+        //.setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
+        //.setThumbnail(message.guild.iconURL)
+        //.setColor('RANDOM')
+        //.addField("Serveur", message.guild.name, true)
+        //.addField("Channel", message.channel, true)
+        //.addField("Commande", "&tchat " + args.join(" "))
+        //.setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
+        //bot.channels.get("506294723539894273").send(embedlog);
+    //}
 
     if(message.content.startsWith(prefix + "8ball")) {
         let args = message.content.split(" ").slice(1);
@@ -300,13 +306,14 @@ bot.on('message', message => {
         let reponse = (replys[Math.floor(Math.random() * replys.length)])
         message.reply(reponse)
         var embedlog = new Discord.RichEmbed()
-        .setTitle("Logs :tools:")
-        .setDescription("--")
+        .setAuthor("Logs  de commandes :tools:", bot.user.avatarURL)
+        .setDescription("Les logs de commandes vous permettent de voir qui a effectué tel commande.")
         .setThumbnail(message.guild.iconURL)
         .setColor('#ff0000')
-        .addField("Serveur", message.guild.name)
+        .addField("Serveur", message.guild.name, true)
+        .addField("Channel", message.channel, true)
         .addField("Commande", "&8ball " + args.join(" "))
         .setFooter(`© NekoBot • ` + `Commande executée par ` + message.author.tag, message.author.avatarURL).setTimestamp()
-        bot.channels.get("493488756599291904").send(embedlog);
+        bot.channels.get("506294723539894273").send(embedlog);
     }
 });
