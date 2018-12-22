@@ -23,7 +23,7 @@ bot.on('ready', () => {
         "&help | &report",
         //"957 servs | 13682 users",
         bot.guilds.size + " servs | " + bot.users.size + " users",
-        "Noël, c'est bientôt 🎁"
+        "Noël, c'est dans 3 jours 🎁"
       ]
       bot.user.setActivity(setInterval(function() {
         bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
