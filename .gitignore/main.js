@@ -20,10 +20,10 @@ bot.on('ready', () => {
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {type: 'WATCHING'});
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     var games = [
-        "&help | &report",
+        "&help | &reportbug",
         //"957 servs | 13682 users",
         bot.guilds.size + " servs | " + bot.users.size + " users",
-        "Rejoins la team NekOwO"
+        "🚨 &reportraid"
       ]
       bot.user.setActivity(setInterval(function() {
         bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
