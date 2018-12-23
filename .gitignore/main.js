@@ -162,6 +162,13 @@ bot.on('message', message => {
         message.channel.send(checkstaff);
       }
 
+      if(message.content === prefix + "servers"){
+        var embedservers = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setDescription(`Je suis actuellement sur ${bot.guilds.size}.`)
+        message.channel.sendEmbed(embedservers);
+    }
+
       if(message.content === prefix + "infobot"){
         var embedinfobot = new Discord.RichEmbed()
         .setColor('RANDOM')
