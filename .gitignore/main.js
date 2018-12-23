@@ -165,7 +165,7 @@ bot.on('message', message => {
       if(message.content === prefix + "servers"){
         var embedservers = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setDescription(`Je suis actuellement sur ${bot.guilds.size}.`)
+        .setDescription(`Je suis actuellement sur ${bot.guilds.size} serveurs.`)
         message.channel.sendEmbed(embedservers);
     }
 
