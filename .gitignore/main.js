@@ -170,6 +170,14 @@ bot.on('message', message => {
         message.channel.sendEmbed(embedinfobot);
     }
 
+    if(message.content === prefix + "infods"){
+      var embedinfods = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setAuthor("Informations du serveur Discord", bot.guild.avatarURL)
+      .setDescription(`▪️ **Nom :** ` + bot.guild.name + `\n\n▪️ **ID :** ` + bot.guild.id + `\n\n▪️ **Créé le :** ` + bot.guild.createAt +`\n\n▪️ **Nombre de membres :** ` + bot.users.guild)
+      message.channel.sendEmbed(embedinfods);
+    }
+
     if(message.content.startsWith(prefix + "alerte")){
         message.delete()
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
