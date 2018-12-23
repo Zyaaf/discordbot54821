@@ -198,8 +198,8 @@ bot.on('message', message => {
         .setFooter(`Sondage proposé par ${message.author.username}`)
         message.channel.send(embedsondage)
         .then(function (message){
-            message.react("<514131313922539542>")
-            message.react("<514131443677397000>")
+            message.react("514131313922539542")
+            message.react("514131443677397000")
         }).catch(function(){
 
         });
