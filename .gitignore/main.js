@@ -42,55 +42,12 @@ bot.on('message', message => {
     if(message.content.startsWith("salut Neko")) {
         message.channel.send(`Salut salut !`);
     }
-
-    if(cmd === `${prefix}hkqgruhkqryghkqrygk`) { //commande checkban
-      var mentionuser = message.mentions.users.first() || message.author;
-      const gbannid = [
-        "490220916484341761",
-        "325567746840723466",
-        "307565934195769344",
-        "505917632399015968",
-        "511967806615453696",
-        "512322702175109146",
-        "512326099242582036",
-        "512326759321174021",
-        "512327625889546262",
-        "512328234843766784",
-        "512331118234566657",
-        "512333435172552720",
-        "407126823374159872",
-        "258915895764713472",
-        "511973013655388191",
-        "511964175967322146",
-        "509736503753310240",
-        "509736930712354826",
-        "509737627684175873",
-        "509739176384790528",
-        "509739856759357452",
-        "509740581103206400",
-        "509741157379473409",
-        "509743430755287050",
-        "509744178335580176",
-        "509744754813304852",
-        "509745095600504843",
-        "500003919163031583",
-        "482968173256376348",
-        "400345602019295252",
-        "341303714692333571",
-        "269554301746020362",
-        "412701383767097346",
-        "293475761732714496"
-      ];
-      if (!gbannid.includes(mentionuser.id)) {
-        var gban = new Discord.RichEmbed()
-        .setColor('#01DF01')
-        .setDescription(`**<@${mentionuser.id}**> n'est pas dans la blacklist de Neko.`)
-        return message.channel.send(gban)
-      };
-      var gban = new Discord.RichEmbed()
-      .setColor('#DF0101')
-      .setDescription(`**<@${mentionuser.id}>** est bien dans la blacklist de Neko.`)
-      message.channel.send(gban);
+    
+    if(message.content.startsWith(prefix + "ping")) {
+        var embednom = new Discord.RichEmbed()
+          .setDescription("Le temps de latence entre Neko et le serveur est de " + `${message.createdTimestamp - Date.now()}` + " ms.")
+          .setColor('RANDOM')
+        message.channel.sendEmbed(embednom)
     }
 
     if(message.content.startsWith(prefix + "say")) {
@@ -218,11 +175,10 @@ bot.on('message', message => {
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
         let args = message.content.split(" ").slice(1);
         let thingToEcho = args.join(" ")
-        message.channel.send("@everyone **UNE INFORMATION POUR LES MEMBRES CI-DESSOUS !** :small_red_triangle_down:")
+        message.channel.send("@everyone **UNE INFORMATION POUR LES MEMBRES !** :small_red_triangle_down:")
         var embedalerte = new Discord.RichEmbed()
-        .setTitle("INFORMATION :loudspeaker:")
         .setDescription("" + thingToEcho + "")
-        .setColor('RANDOM')
+        .setColor('#FF4000')
         .setFooter(message.guild.name)
         message.channel.send(embedalerte)
     }else{
@@ -235,7 +191,6 @@ bot.on('message', message => {
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
         let args = message.content.split(" ").slice(1);
         let thingToEcho = args.join(" ")
-        message.channel.send("@everyone **UN SONDAGE POUR LES MEMBRES CI-DESSOUS !** :small_red_triangle_down:")
         var embedsondage = new Discord.RichEmbed()
         .setTitle("SONDAGE :bar_chart:")
         .setDescription("" + thingToEcho + "\nRépondre avec <:true:514131313922539542> et <:false:514131443677397000>")
@@ -243,8 +198,8 @@ bot.on('message', message => {
         .setFooter(`Sondage proposé par ${message.author.username}`)
         message.channel.send(embedsondage)
         .then(function (message){
-            message.react("<:true:514131313922539542>")
-            message.react("<:false:514131443677397000>")
+            message.react("<514131313922539542>")
+            message.react("<514131443677397000>")
         }).catch(function(){
 
         });
@@ -252,7 +207,7 @@ bot.on('message', message => {
         return message.reply("vous n'avez pas la permission exacte pour faire un sondage.")
     }
     }
-
+    
     //if(message.content.startsWith(prefix + "tchat")) {
         //let xoargs = message.content.split(" ").slice(1);
         //let xo03 = xoargs.join(" ")
