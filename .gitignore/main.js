@@ -73,7 +73,7 @@ bot.on('message', message => {
         message.reply("merci de bien vouloir consulter vos MP.")
         var help = new Discord.RichEmbed()
         .setAuthor("Commandes Utiles", bot.user.avatarURL)
-        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**&infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&myavatar**\nDemander le lien de son avatar\n**&servers**\nPermet de voir le nombre de servers ou est Neko")
+        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**&infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&avatar**\nDemander le lien de l'avatar de quelqu'un\n**&servers**\nPermet de voir le nombre de servers ou est Neko")
         .setColor('RANDOM')
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
@@ -127,7 +127,7 @@ bot.on('message', message => {
         message.guild.member(kUser).kick(kReason);
         return;
       }
-      
+
       if(cmd === `${prefix}ban`) {
         message.delete()
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -178,6 +178,24 @@ bot.on('message', message => {
       message.channel.sendEmbed(embedinfods);
     }
 
+    if(message.content === prefix + "mystats"){
+      var embedmystats = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setAuthor("Informations de " + message.author.username, message.author.avatarURL)
+      .setDescription(`▪️ **Nom :** ` + message.author.tag + `\n\n▪️ **ID :** ` + message.author.id + `\n\n▪️ **Compte créé le :** ` + message.author.createAt + "\n\n▪️ **Robot :** " + message.author.bot + `\n\n▪️ **A rejoint le serveur Discord le :** ` + message.author.joinAt)
+      message.channel.sendEmbed(embedmystats);
+    }
+
+    if(cmd === `${prefix}avatar`) {
+      var mentionuser = message.mentions.users.first() || message.author;
+      var embedmyavatar = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setAuthor("Avatar de " + mentionuser.username, message.author.avatarURL)
+      .setImage(mentionuser.avatarURL)
+      .setFooter("By " + message.author.username)
+      message.channel.sendEmbed(embedmyavatar);
+    }
+
     if(message.content.startsWith(prefix + "alerte")){
         message.delete()
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -215,7 +233,7 @@ bot.on('message', message => {
         return message.reply("vous n'avez pas la permission exacte pour faire un sondage.")
     }
     }
-    
+
     //if(message.content.startsWith(prefix + "tchat")) {
         //let xoargs = message.content.split(" ").slice(1);
         //let xo03 = xoargs.join(" ")
@@ -233,7 +251,7 @@ bot.on('message', message => {
         //.addField("En provenance de", message.author.tag, true)
         //.addField("Message", xo03)
         //.setFooter(`© NekoBot`, message.author.avatarURL).setTimestamp()
-        //bot.channels.findAll('name', 'neko-interserveur').map(channel => channel.send(embedglobal))
+       //bot.channels.findAll('name', 'neko-interserveur').map(channel => channel.send(embedglobal))
     //}
 
     if(message.content.startsWith(prefix + "8ball")) {
