@@ -73,7 +73,7 @@ bot.on('message', message => {
         message.reply("merci de bien vouloir consulter vos MP.")
         var help = new Discord.RichEmbed()
         .setAuthor("Commandes Utiles", bot.user.avatarURL)
-        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**&infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&avatar**\nDemander le lien de l'avatar de quelqu'un\n**&servers**\nPermet de voir le nombre de servers ou est Neko")
+        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**HS - &infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&avatar**\nDemander le lien de l'avatar de quelqu'un\n**&servers**\nPermet de voir le nombre de servers ou est Neko")
         .setColor('RANDOM')
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
@@ -82,7 +82,7 @@ bot.on('message', message => {
         var helpfun = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setAuthor("Commandes Fun", bot.user.avatarURL)
-        .setDescription("**__\nFUN :**\n\n**&bvn**\nPermet de souhaiter la bienvenue à un utilisateur\n**&say**\nFaire dire quelque chose à Neko\n**&8ball**\nPermet de poser une question à Neko\n**&cat**\nPermet d'afficher un chat\n**&dog**\nPermet d'affichier un chien\n**&calin**\nPermet de faire un câlin à un utilisateur\n**&bisou**\nPermet de faire un bisou à un utilisateur\n**&gifle**\nPermet de donner une grosse gifle à un utilisateur\n**&tue**\nPermet de tuer un utilisateur")
+        .setDescription("**__\nFUN :**\n\n**&say**\nFaire dire quelque chose à Neko\n**&8ball**\nPermet de poser une question à Neko\n**&cat**\nPermet d'afficher un chat\n**&dog**\nPermet d'affichier un chien\n**HS - &calin**\nPermet de faire un câlin à un utilisateur\n**HS - &bisou**\nPermet de faire un bisou à un utilisateur\n**HS - &gifle**\nPermet de donner une grosse gifle à un utilisateur\n**HS - &tue**\nPermet de tuer un utilisateur")
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
             channel.send(helpfun)
@@ -140,6 +140,23 @@ bot.on('message', message => {
         return;
       }
 
+      if(cmd === `${prefix}warn-horsservice`) {
+        message.delete()
+        let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(!wUser) return message.reply("vous devez mentionner un utilisateur à avertir.");
+        let wReason = args.join(" ").slice(22);
+        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("vous n'avez pas la permission exacte pour warn quelqu'un.");
+        if(wUser.hasPermission("MANAGE_MESSAGES")) return message.reply("la personne que vous avez mentionné est un administrateur donc je ne peux pas warn cette personne.");
+        message.author.createDM().then(channel => {
+            var embedwarn = new Discord.RichEmbed()
+            .setColor('RANDOM')
+            .setTitle("Avertissement")
+            .setDescription(args.join(" "))
+            .setFooter(bot.guild.name)
+            message.channel.send(embedwarn);
+        });
+      }
+
       if(cmd === `${prefix}checkstaff`) {
         var mentionuser = message.mentions.users.first() || message.author;
         const staffs = [
@@ -162,6 +179,46 @@ bot.on('message', message => {
         message.channel.send(checkstaff);
       }
 
+      if(cmd === `${prefix}cat`) {
+        var cats = [
+            "https://www.wanimo.com/veterinaire/images/articles/chat/chaton-qui-miaule.jpg",
+            "https://chatfaitdubien.fr/wp-content/uploads/2016/09/chaton-1080x675.jpg",
+            "https://www.wikichat.fr/wp-content/uploads/sites/2/Fotolia_105455903_S.jpg",
+            "https://chatfaitdubien.fr/wp-content/uploads/2016/10/portrait-chaton-1080x675.jpg",
+            "http://www.leschatonsdor.fr/wp-content/uploads/2017/11/chatons2.jpg",
+            "https://ahmondedemerde.files.wordpress.com/2016/10/wallpaper-chaton.jpg?w=650",
+            "https://img.bfmtv.com/c/1256/708/92a/5a15ebccb41456c68539f83aeba6d.jpeg"
+        ];
+
+        let reponse = (cats[Math.floor(Math.random() * cats.length)])
+        var embedmyavatar = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle("Meow :cat:")
+        .setImage(reponse)
+        .setFooter("By " + message.author.username)
+        message.channel.sendEmbed(embedmyavatar);
+      }
+
+      if(cmd === `${prefix}dog`) {
+        var dogs = [
+            "https://webfiles2.luxweb.com/upload/cms/373/large/a5c03c18-dbad-4bc9-8eb1-58d75b3cb4a9.jpg",
+            "https://jardinage.lemonde.fr/images/dossiers/2017-08/premiers-soins-premiers-apprentissage-chiot-170904.jpg",
+            "https://static.toutoupourlechien.com/2016/12/apprendre-son-nom-chiot.jpg",
+            "https://www.dressagechien.net/wp-content/uploads/2015/11/dressage-chiot-chasse.jpg",
+            "https://static.actu.fr/uploads/2018/05/25058-180503173621094-0-854x641.jpg",
+            "http://www.mouss-le-chien.com/medias/album/dsc05434.jpg",
+            "https://cdnfr1.img.sputniknews.com/images/103352/85/1033528538.jpg"
+        ];
+
+        let reponse = (dogs[Math.floor(Math.random() * dogs.length)])
+        var embedmyavatar = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle("Woof :dog:")
+        .setImage(reponse)
+        .setFooter("By " + message.author.username)
+        message.channel.sendEmbed(embedmyavatar);
+      }
+
       if(message.content === prefix + "servers"){
         var embedservers = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -172,7 +229,7 @@ bot.on('message', message => {
       if(message.content === prefix + "infobot"){
         var embedinfobot = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setAuthor("Informations", bot.user.avatarURL)
+        .setTitle("Informations de Neko")
         .setDescription(`▪️ **Nom :** Neko#7178\n\n▪️ **ID :** 476576549882036234\n\n▪️ **Développeur :** Lucaas#7251\n\n▪️ **Version :** v2.0.1\n\n▪️ **Date de création :** vendredi 24 août 2018 à 18:26:53\n\n▪️ **Serveur Discord lié à Neko :** https://discord.gg/QUCc2PW`)
         message.channel.sendEmbed(embedinfobot);
     }
@@ -180,7 +237,8 @@ bot.on('message', message => {
     if(message.content === prefix + "infods"){
       var embedinfods = new Discord.RichEmbed()
       .setColor('RANDOM')
-      .setAuthor("Informations du serveur Discord", bot.guild.avatarURL)
+      .setTitle("Informations du serveur Discord")
+      .setThumbnail(bot.guild.avatarURL)
       .setDescription(`▪️ **Nom :** ` + bot.guild.name + `\n\n▪️ **ID :** ` + bot.guild.id + `\n\n▪️ **Créé le :** ` + bot.guild.createAt +`\n\n▪️ **Nombre de membres :** ` + bot.users.guild)
       message.channel.sendEmbed(embedinfods);
     }
@@ -188,16 +246,17 @@ bot.on('message', message => {
     if(message.content === prefix + "mystats"){
       var embedmystats = new Discord.RichEmbed()
       .setColor('RANDOM')
-      .setAuthor("Informations de " + message.author.username, message.author.avatarURL)
+      .setTitle("Informations de " + message.author.username)
+      .setThumbnail(message.author.avatarURL)
       .setDescription(`▪️ **Nom :** ` + message.author.tag + `\n\n▪️ **ID :** ` + message.author.id + `\n\n▪️ **Compte créé le :** ` + message.author.createAt + "\n\n▪️ **Robot :** " + message.author.bot + `\n\n▪️ **A rejoint le serveur Discord le :** ` + message.author.joinAt)
       message.channel.sendEmbed(embedmystats);
     }
 
     if(cmd === `${prefix}avatar`) {
-      var mentionuser = message.mentions.users.first() || message.author;
+        var mentionuser = message.mentions.users.first() || message.author;
       var embedmyavatar = new Discord.RichEmbed()
       .setColor('RANDOM')
-      .setAuthor("Avatar de " + mentionuser.username, message.author.avatarURL)
+      .setTitle("Avatar de " + mentionuser.username)
       .setImage(mentionuser.avatarURL)
       .setFooter("By " + message.author.username)
       message.channel.sendEmbed(embedmyavatar);
