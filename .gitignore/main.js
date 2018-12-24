@@ -90,7 +90,7 @@ bot.on('message', message => {
         var helpmod = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setAuthor("Commandes Modération", bot.user.avatarURL)
-        .setDescription("**__\nMODÉRATION :**\n\n**&clear**\nSupprime un nombre de messages\n**&warn**\nPermet d'avertir un utilisateur par MP\n**&kick**\nKick l'utilisateur séléctionné\n**&ban**\nBan l'utilisateur séléctionné")
+        .setDescription("**__\nMODÉRATION :**\n\n**&clear**\nSupprime un nombre de messages\n**&kick**\nKick l'utilisateur séléctionné\n**&ban**\nBan l'utilisateur séléctionné")
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
             channel.send(helpmod)
@@ -138,23 +138,6 @@ bot.on('message', message => {
         message.channel.send(`**${message.user.username}** a bien été banni du serveur par **${message.author.username}** avec succès.`);
         message.guild.member(bUser).ban(bReason);
         return;
-      }
-
-      if(cmd === `${prefix}warn-horsservice`) {
-        message.delete()
-        let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!wUser) return message.reply("vous devez mentionner un utilisateur à avertir.");
-        let wReason = args.join(" ").slice(22);
-        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("vous n'avez pas la permission exacte pour warn quelqu'un.");
-        if(wUser.hasPermission("MANAGE_MESSAGES")) return message.reply("la personne que vous avez mentionné est un administrateur donc je ne peux pas warn cette personne.");
-        message.author.createDM().then(channel => {
-            var embedwarn = new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .setTitle("Avertissement")
-            .setDescription(args.join(" "))
-            .setFooter(bot.guild.name)
-            message.channel.send(embedwarn);
-        });
       }
 
       if(cmd === `${prefix}checkstaff`) {
