@@ -73,7 +73,7 @@ bot.on('message', message => {
         message.reply("merci de bien vouloir consulter vos MP.")
         var help = new Discord.RichEmbed()
         .setAuthor("Commandes Utiles", bot.user.avatarURL)
-        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**HS - &infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&avatar**\nDemander le lien de l'avatar de quelqu'un\n**&servers**\nPermet de voir le nombre de servers ou est Neko")
+        .setDescription("**__\nUTILES :**\n\n**&help**\nPermet de voir la liste des commandes\n**&ping**\nVoir le temps de latence entre Neko et le serveur\n**&infobot**\nAffiche les informations sur Neko\n**&checkstaff**\nPermet de vérifier si la personne est bien de l'équipe de Neko\n**HS - &infods**\nVoir les informations du serveur Discord\n**&mystats**\nPermet de voir ses statisques\n**&avatar**\nDemander le lien de l'avatar de quelqu'un\n**&servers**\nPermet de voir le nombre de servers ou est Neko\n**&mp**\nPermet d'envoyer un message privé à quelqu'un à partir de Neko")
         .setColor('RANDOM')
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
@@ -102,6 +102,20 @@ bot.on('message', message => {
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
             channel.send(helpadm)
+        });
+    }
+
+    if(cmd === `${prefix}mp`) {
+        var mentionuser = message.mentions.users.first() || message.author;
+        let args = message.content.split(" ").slice(1);
+        let thingToEcho = args.join(" ")
+        var embedmp = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle("Message privé 🔐")
+        .setDescription(thingToEcho)
+        .setFooter("By " + message.author.username)
+        mentionuser.createDM().then(channel => {
+            channel.send(embedmp)
         });
     }
 
