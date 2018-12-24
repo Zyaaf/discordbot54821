@@ -300,6 +300,28 @@ bot.on('message', message => {
     }
     }
 
+    if(message.content.startsWith(prefix + "vraioufaux")){
+        message.delete()
+    if (message.member.hasPermission("MANAGE_MESSAGES")) {
+        let args = message.content.split(" ").slice(1);
+        let thingToEcho = args.join(" ")
+        var embedsondage = new Discord.RichEmbed()
+        .setTitle("VRAI OU FAUX 📈")
+        .setDescription("" + thingToEcho + "\nRépondre avec <:true1:526549692327133214> et <:false1:526549648513564693>")
+        .setColor('RANDOM')
+        .setFooter(`Vrai ou Faux proposé par ${message.author.username}`)
+        message.channel.send(embedsondage)
+        .then(function (message){
+            message.react("526549692327133214")
+            message.react("526549648513564693")
+        }).catch(function(){
+
+        });
+    }else{
+        return message.reply("vous n'avez pas la permission exacte pour faire un vrai ou faux.")
+    }
+    }
+
     //if(message.content.startsWith(prefix + "tchat")) {
         //let xoargs = message.content.split(" ").slice(1);
         //let xo03 = xoargs.join(" ")
