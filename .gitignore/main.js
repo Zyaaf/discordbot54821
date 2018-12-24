@@ -98,7 +98,7 @@ bot.on('message', message => {
         var helpadm = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setAuthor("Commandes Administration", bot.user.avatarURL)
-        .setDescription("**__\nADMINISTRATION :**\n\n**&alerte**\nPermet d'envoyer des informations pour les membres\n**&sondage**\nPermet de crée des sondages")
+        .setDescription("**__\nADMINISTRATION :**\n\n**&alerte**\nPermet d'envoyer des informations pour les membres\n**&sondage**\nPermet de crée des sondages\n**&vraioufaux**\nPermet de crée des vrai ou faux")
         .setFooter(`Fiche commande - NekoBOT`)
         message.author.createDM().then(channel => {
             channel.send(helpadm)
