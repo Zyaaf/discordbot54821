@@ -20,8 +20,7 @@ bot.on('ready', () => {
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {type: 'WATCHING'});
     //bot.user.setActivity('&help | ' + bot.guilds.size + ' servs | ' + bot.users.size + ' users 🍁', {url:"https://www.twitch.tv/nekobot", type: "STREAMING"})
     var games = [
-        "[🔗] &help",
-        "[🚨] &report",
+        "🔗 &help",
         //"957 servs | 13682 users",
         bot.guilds.size + " servs | " + bot.users.size + " users"
       ]
